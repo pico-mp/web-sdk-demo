@@ -1,0 +1,77 @@
+{
+  "king": {
+    "name": "King",
+    "symbol": "K",
+    "moves": [
+      { "direction": [0, 1], "maxSteps": 1 },
+      { "direction": [0, -1], "maxSteps": 1 },
+      { "direction": [1, 0], "maxSteps": 1 },
+      { "direction": [-1, 0], "maxSteps": 1 },
+      { "direction": [1, 1], "maxSteps": 1 },
+      { "direction": [1, -1], "maxSteps": 1 },
+      { "direction": [-1, 1], "maxSteps": 1 },
+      { "direction": [-1, -1], "maxSteps": 1 }
+    ],
+    "special": ["castling", "must-escape-check"]
+  },
+  "queen": {
+    "name": "Queen",
+    "symbol": "Q",
+    "moves": [
+      { "direction": [0, 1], "maxSteps": 7 },
+      { "direction": [0, -1], "maxSteps": 7 },
+      { "direction": [1, 0], "maxSteps": 7 },
+      { "direction": [-1, 0], "maxSteps": 7 },
+      { "direction": [1, 1], "maxSteps": 7 },
+      { "direction": [1, -1], "maxSteps": 7 },
+      { "direction": [-1, 1], "maxSteps": 7 },
+      { "direction": [-1, -1], "maxSteps": 7 }
+    ]
+  },
+  "rook": {
+    "name": "Rook",
+    "symbol": "R",
+    "moves": [
+      { "direction": [0, 1], "maxSteps": 7 },
+      { "direction": [0, -1], "maxSteps": 7 },
+      { "direction": [1, 0], "maxSteps": 7 },
+      { "direction": [-1, 0], "maxSteps": 7 }
+    ]
+  },
+  "bishop": {
+    "name": "Bishop",
+    "symbol": "B",
+    "moves": [
+      { "direction": [1, 1], "maxSteps": 7 },
+      { "direction": [1, -1], "maxSteps": 7 },
+      { "direction": [-1, 1], "maxSteps": 7 },
+      { "direction": [-1, -1], "maxSteps": 7 }
+    ]
+  },
+  "knight": {
+    "name": "Knight",
+    "symbol": "N",
+    "moves": [
+      { "direction": [1, 2], "maxSteps": 1, "jump": true },
+      { "direction": [2, 1], "maxSteps": 1, "jump": true },
+      { "direction": [-1, 2], "maxSteps": 1, "jump": true },
+      { "direction": [-2, 1], "maxSteps": 1, "jump": true },
+      { "direction": [1, -2], "maxSteps": 1, "jump": true },
+      { "direction": [2, -1], "maxSteps": 1, "jump": true },
+      { "direction": [-1, -2], "maxSteps": 1, "jump": true },
+      { "direction": [-2, -1], "maxSteps": 1, "jump": true }
+    ]
+  },
+  "pawn": {
+    "name": "Pawn",
+    "symbol": "P",
+    "moves": [
+      { "direction": [1, 0], "maxSteps": 1, "condition": "empty" }
+    ],
+    "attacks": [
+      { "direction": [1, 1], "maxSteps": 1, "condition": "enemy" },
+      { "direction": [1, -1], "maxSteps": 1, "condition": "enemy" }
+    ],
+    "special": ["first-move-double", "en-passant", "promotion"]
+  }
+}
