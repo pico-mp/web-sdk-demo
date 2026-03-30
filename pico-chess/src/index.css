@@ -1,0 +1,227 @@
+:root {
+  --bg-dark: #302e2b;
+  --bg-panel: #262421;
+  --square-light: #eeeed2;
+  --square-dark: #769656;
+  --square-select: rgba(255, 255, 51, 0.5);
+  --square-last-move: rgba(172, 195, 51, 0.5);
+  --text-main: #ffffff;
+  --text-muted: #bababa;
+  --accent: #81b64c;
+  --border: #403d39;
+  --square-size: 72px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.game-container {
+  display: grid;
+  grid-template-columns: auto 300px;
+  gap: 20px;
+  background-color: var(--bg-panel);
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  max-width: 100vw;
+  max-height: 100vh;
+  overflow: auto;
+}
+
+.board-area {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.chess-board {
+  display: grid;
+  grid-template-columns: repeat(8, var(--square-size));
+  grid-template-rows: repeat(8, var(--square-size));
+  border: 4px solid #222;
+  border-radius: 4px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.cell {
+  position: relative;
+  width: var(--square-size);
+  height: var(--square-size);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.cell.white { background-color: var(--square-light); }
+.cell.black { background-color: var(--square-dark); }
+
+.cell.selected { background-color: var(--square-select); }
+.cell.last-move { background-color: var(--square-last-move); }
+
+.cell .piece {
+  font-size: 56px;
+  z-index: 2;
+  transition: transform 0.1s ease-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.cell:hover .piece {
+  transform: scale(1.05);
+}
+
+.valid-move-dot {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: rgba(0,0,0,0.15);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.valid-move-capture {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border: 5px solid rgba(0,0,0,0.1);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.side-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 10px;
+  border-left: 1px solid var(--border);
+}
+
+.player-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 6px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  background: #444;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.status-badge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.status-badge.online { background: var(--accent); color: white; }
+.status-badge.waiting { background: #d4a017; color: white; }
+
+.btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: filter 0.2s;
+}
+
+.btn-primary { background: var(--accent); color: white; }
+.btn-secondary { background: #3c3a38; color: var(--text-muted); }
+.btn:hover { filter: brightness(1.1); }
+
+.room-code-display {
+  font-family: monospace;
+  font-size: 24px;
+  letter-spacing: 2px;
+  color: var(--accent);
+  background: #1a1917;
+  padding: 10px;
+  border-radius: 4px;
+  margin: 10px 0;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 900px) {
+  :root {
+    --square-size: 11vw; /* Scale board for tablet/mobile */
+  }
+
+  body {
+    overflow: auto;
+  }
+
+  #root {
+    height: auto;
+    padding: 20px 0;
+  }
+
+  .game-container {
+    grid-template-columns: 1fr;
+    width: 95vw;
+    padding: 12px;
+    gap: 16px;
+    max-height: none;
+  }
+
+  .chess-board {
+    margin: 0 auto;
+  }
+
+  .cell .piece {
+    font-size: 8vw;
+  }
+
+  .side-panel {
+    border-left: none;
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
+  }
+
+  .room-code-display {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --square-size: 11.5vw;
+  }
+  
+  .game-container {
+     padding: 8px;
+  }
+
+  .cell .piece {
+    font-size: 9vw;
+  }
+}

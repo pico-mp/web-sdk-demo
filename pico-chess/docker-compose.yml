@@ -1,0 +1,13 @@
+services:
+  pico-chess:
+    image: ap-kulai-2.ocir.io/axhxhxvenl4p/pico-chess:latest
+    container_name: pico-chess
+    restart: unless-stopped
+    environment:
+      - VITE_PICO_API_KEY=${VITE_PICO_API_KEY}
+    networks:
+      - proxy-nw
+
+networks:
+  proxy-nw:
+    external: true
